@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cinemorph</title>
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: #07080c; color: #e8e6e0;
+      font: 15px/1.5 system-ui, sans-serif;
+      display: grid; place-items: center; min-height: 100vh;
+    }
+    .stage { position: relative; width: min(92vw, 1100px); aspect-ratio: 16/9;
+      background: #000; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 20px 80px rgba(0,0,0,.6); }
+    video { width: 100%; height: 100%; display: block; background: #000; }
+
+    /* Credits / overlay surface — input is LIVE during credits, persists after. */
+    .overlay {
+      position: absolute; inset: 0; display: none;
+      flex-direction: column; justify-content: flex-end; gap: 14px;
+      padding: 28px; background: linear-gradient(transparent, rgba(0,0,0,.85));
+    }
+    .overlay.show { display: flex; }
+    .credits { font-size: 13px; opacity: .7; letter-spacing: .04em; }
+    .composer { display: flex; gap: 10px; }
+    .composer input {
+      flex: 1; padding: 12px 14px; border-radius: 8px; border: 1px solid #2a2d36;
+      background: #11131a; color: inherit; font: inherit;
+    }
+    .composer button {
+      padding: 12px 18px; border-radius: 8px; border: 0; cursor: pointer;
+      background: #d9762b; color: #120a04; font-weight: 600;
+    }
+    .composer button.secondary { background: #23262f; color: #e8e6e0; }
+    .status { position: absolute; top: 16px; left: 16px; font-size: 12px;
+      opacity: .65; background: rgba(0,0,0,.45); padding: 4px 10px; border-radius: 6px; }
+    button:disabled { opacity: .5; cursor: default; }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <video id="player" playsinline controls></video>
+    <div class="status" id="status">idle</div>
+
+    <!-- Shown when credits roll: input is live here, then persists. -->
+    <div class="overlay" id="overlay">
+      <div class="credits">— a Cinemorph cut · reshape it below —</div>
+      <div class="composer">
+        <input id="note" placeholder="Reshape the film… e.g. “make the ending darker”" />
+        <button id="submit">Reshape</button>
+        <button id="rewatch" class="secondary">Rewatch</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

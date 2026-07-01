@@ -1,0 +1,38 @@
+# Secrets
+.env
+.env.local
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# API-key connection test notebooks
+api_tests/*
+
+# Music — keep the folder, ignore the audio files
+assets/songs/*
+!assets/songs/.gitkeep
+
+# Content-addressed media cache — keep the folder structure, ignore the media
+cache/chars/*
+!cache/chars/.gitkeep
+cache/clips/*
+!cache/clips/.gitkeep
+cache/images/*
+!cache/images/.gitkeep
+cache/narration/*
+!cache/narration/.gitkeep
+
+# Rendered movie output — keep the folder, ignore the video
+out/*
+!out/.gitkeep
+
+# Assistant memory (never committed)
+memory/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/

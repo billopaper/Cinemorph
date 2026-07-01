@@ -1,0 +1,83 @@
+{
+  "title": "The Last Chip",
+  "style": {
+    "look": "photorealistic live-action sci-fi cinema, shot on ARRI Alexa 65 with anamorphic lenses, ultra-detailed practical and CG visual effects, naturalistic motivated lighting, shallow depth of field, subtle film grain, volumetric haze, high dynamic range",
+    "palette": "deep cosmic blue + warm amber sunlight",
+    "aspect": "16:9"
+  },
+  "characters": [
+    {
+      "id": "hero",
+      "description": "a lone young man, lean, short dark curls, dust-worn flight jacket, 3 days of stubble, determined and hopeful expression",
+      "seed": 615028
+    }
+  ],
+  "music": "assets/songs/original.mp3",
+  "scenes": [
+    {
+      "id": "s1",
+      "beat": "cold-open spectacle",
+      "prompt": "A Earth-like planet with blue oceans and white clouds drifts in deep space, being pulled toward a vast burning sun on the horizon. Close to the sun we see another planet already caught in the sun's grip. Its a dusty red planet, cracked and glowing from the heat, being torn apart. Wide cosmic shot, epic scale, foreboding.",
+      "motion": "the burning sun grows visibly and steadily larger over the shot, slow but clearly perceptible; the Earth-like planet drifts toward it while, nearer the sun, the dusty-red planet glows hotter, showing cracks and is ripped apart into long streams of glowing debris.",
+      "camera": "the camera holds on the Earth-like planet and arcs gently, the doomed red world and the swelling sun beyond it in layered parallax",
+      "light": "fierce solar glare growing brighter as the sun swells, hot red glow rimming the dying planet, deep shadows across the Earth-like planet's night side",
+      "duration": 5,
+      "render": { "clip_hash": null, "status": "stale", "file": null }
+    },
+    {
+      "id": "s2",
+      "beat": "establish the hero and the threat",
+      "prompt": "@hero, seen from behind with his back to the camera, stands beside his small stone house on a cracked dying world, looking up at a vast burning sun — fiery orange and swelling — that dominates the sky. A dead field and a distant dusty town lie ahead. Wide, cinematic, human scale against an enormous sky.",
+      "motion": "@hero stands still with his back to us, head tilted up and shoulders tense; the burning sun visibly swells and pulses hotter over the shot; heat-shimmer rises off the cracked ground and fine dust drifts past him",
+      "camera": "slow creeping push-in from behind @hero toward the swelling sun, subtle handheld sway",
+      "light": "fierce fiery orange-red glare from the swelling sun rimming his silhouette, long hard shadows stretching over the cracked earth",
+      "duration": 5,
+      "render": { "clip_hash": null, "status": "stale", "file": null }
+    },
+    {
+      "id": "s3",
+      "beat": "departure",
+      "prompt": "A side-angle profile of @hero in the cramped cockpit of a small battered shuttle as it climbs out of the upper atmosphere; through the canopy the curved edge of the dying planet falls away below and the black of space opens above.",
+      "motion": "@hero grips the controls, jaw tight, eyes fixed ahead as the shuttle powers upward; the planet's glowing curve drops away below and the sky thins from hazy amber to black star-scattered space; exhaust glare and stray debris streak past the canopy",
+      "camera": "locked side-profile angle on @hero, shaking gently with the thrust, the planet's curve and thinning atmosphere visible past his shoulder",
+      "light": "warm atmospheric glow from below fading to cold starlight, blue-white engine flare and red cockpit lights flickering across his face",
+      "duration": 5,
+      "render": { "clip_hash": null, "status": "stale", "file": null }
+    },
+    {
+      "id": "s4",
+      "beat": "the discovery",
+      "prompt": "Inside an ancient stone pyramid, walls carved with alien glyphs; @hero stands at a weathered stone altar, lifting a small strange alien artifact — intricate otherworldly geometry, organic-metallic and unlike any human technology — that pulses with cyan light in his hands.",
+      "motion": "@hero lifts the alien artifact a little higher, lips parting in awe as its shifting facets turn and its cyan glow pulses and breathes; dust motes drift and swirl slowly through the shafts of light around him",
+      "camera": "slow reverent push-in, shallow focus holding on the glowing alien artifact",
+      "light": "cold alien cyan glow pulsing across his face and the carved walls, hard shafts of dusty light cutting through the gloom",
+      "duration": 5,
+      "render": { "clip_hash": null, "status": "stale", "file": null }
+    },
+    {
+      "id": "s5",
+      "beat": "the save",
+      "prompt": "The same Earth-like planet hangs before the vast burning sun, gravel orbiting the sun, arcs of electric cyan energy beginning to crackle and glimmer and form around the earth like planet. Than when the effect reaches its climax. A bright flash and everything arround the planet, like the sund etc. dissapers. Wide cosmic shot mirroring the opening.",
+      "motion": "the cyan lightning crackles across the whole planet, building and intensifying; then in one blinding flash the planet is teleported to safety — the burning sun and the shattering worlds around it vanish in an instant, leaving the Earth-like planet drifting alone, intact and calm, in empty black space",
+      "camera": "the camera holds steady on the planet like the opening shot and pushes in slightly, unflinching through the flash as everything around it disappears and the planet remains",
+      "light": "crackling electric cyan building against the fierce orange sun, then a blinding white flash, then the harsh solar glare giving way to calm cold starlight on the lone planet",
+      "duration": 5,
+      "render": { "clip_hash": null, "status": "stale", "file": null }
+    },
+    {
+      "id": "s6",
+      "beat": "homecoming — the world reborn",
+      "prompt": "@hero, seen from behind with his back to the camera, stands beside his small stone house — but now the world is healthy, green and rich: lush fields, winding rivers and a bright repaired house. He looks up at a calm, gentle sun in a soft blue sky. Mirrors the earlier shot, human scale.",
+      "motion": "@hero stands with his back to us, shoulders easing and head lifting as a light breeze moves the tall grass and his hair; the gentle sun glows warm and steady while pollen and distant birds drift past",
+      "camera": "slow creeping push-in from behind @hero toward the gentle sun, subtle handheld sway, mirroring the earlier shot",
+      "light": "soft warm golden sunlight, lush green tones, gentle anamorphic lens flare",
+      "duration": 5,
+      "render": { "clip_hash": null, "status": "stale", "file": null }
+    }
+  ],
+  "narration": [
+    { "at": "s1", "text": "Decay... is the fate of nature." },
+    { "at": "s4", "text": "But we wont give up..." },
+    { "at": "s6", "text": "Because resistance... is the way of men." }
+  ]
+}

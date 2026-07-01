@@ -1,0 +1,9 @@
+# Video Generation Tool
+RUNWAY_API_KEY=
+
+# Narration/Voice Generation Tool
+ELEVENLABS_API_KEY=
+ELEVENLABS_VOICE_ID=
+
+# For the local web app
+PORT=
