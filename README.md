@@ -6,6 +6,14 @@ A director-in-the-loop film generator prototype. You watch a short AI-generated 
 credits roll you type an instruction like "make the hero a robot". It re-renders only the scenes that
 change, then plays the new cut. Single-user, runs on localhost.
 
+| | Section | In one line |
+|---|---|---|
+| ❓ | [**Question**](#-question) | The original curiosity, plainly stated. |
+| ⚡ | [**Short Answer**](#-short-answer) | The quick takeaway, for impatient readers. |
+| 🔧 | [**Setup**](#-setup) | Architecture, datasets, design decisions. |
+| 🧪 | [**Implementation**](#-implementation) | Notes on the actual code, in this repository. |
+| 📊 | [**Résumé**](#-résumé) | Results, lessons learned, and final thoughts. |
+
 ## ❓ Question
 
 We've all complained about a film or show: the story fell flat, a twist annoyed us, an actor felt
