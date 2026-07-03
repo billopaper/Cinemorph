@@ -1,6 +1,6 @@
 # Cinemorph - feedback loop based video generation
 
-*BilloPaper #02*
+*BilloPaper #03*
 
 A director-in-the-loop film generator prototype. You watch a short AI-generated film, and when the
 credits roll you type an instruction like "make the hero a robot". It re-renders only the scenes that
