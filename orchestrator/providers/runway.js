@@ -27,27 +27,47 @@ function headers() {
   };
 }
 
-async function postTask(endpoint, body) {
-  const res = await fetch(`${BASE}${endpoint}`, {
-    method: 'POST',
-    headers: headers(),
-    body: JSON.stringify(body),
-  });
-  if (!res.ok) {
-    const detail = await res.text().catch(() => '');
-    throw new Error(`Runway ${endpoint} failed (${res.status}): ${detail}`);
+/** Retry a network op on transient errors (connection resets, timeouts) with backoff. */
+async function withRetry(fn) {
+  const attempts = 4;
+  for (let i = 0; i < attempts; i++) {
+    try {
+      return await fn();
+    } catch (err) {
+      const msg = String(err?.cause?.code || err?.cause?.message || err?.message || err);
+      const transient =
+        /ECONNRESET|ETIMEDOUT|EAI_AGAIN|ENOTFOUND|terminated|fetch failed|socket hang up|UND_ERR/i.test(msg);
+      if (!transient || i === attempts - 1) throw err;
+      await new Promise((r) => setTimeout(r, 1500 * (i + 1)));
+    }
   }
-  return (await res.json()).id;
+}
+
+async function postTask(endpoint, body) {
+  return withRetry(async () => {
+    const res = await fetch(`${BASE}${endpoint}`, {
+      method: 'POST',
+      headers: headers(),
+      body: JSON.stringify(body),
+    });
+    if (!res.ok) {
+      const detail = await res.text().catch(() => '');
+      throw new Error(`Runway ${endpoint} failed (${res.status}): ${detail}`);
+    }
+    return (await res.json()).id;
+  });
 }
 
 async function pollTask(id, { log = () => {}, label = 'task' } = {}) {
   for (let i = 0; i < 180; i++) {
-    const res = await fetch(`${BASE}/v1/tasks/${id}`, { headers: headers() });
-    if (!res.ok) {
-      const detail = await res.text().catch(() => '');
-      throw new Error(`Runway poll failed (${res.status}): ${detail}`);
-    }
-    const task = await res.json();
+    const task = await withRetry(async () => {
+      const res = await fetch(`${BASE}/v1/tasks/${id}`, { headers: headers() });
+      if (!res.ok) {
+        const detail = await res.text().catch(() => '');
+        throw new Error(`Runway poll failed (${res.status}): ${detail}`);
+      }
+      return res.json();
+    });
     if (task.status === 'SUCCEEDED') return task.output;
     if (task.status === 'FAILED' || task.status === 'CANCELLED') {
       throw new Error(`Runway ${label} ${task.status}: ${JSON.stringify(task.failure ?? task)}`);
@@ -59,9 +79,11 @@ async function pollTask(id, { log = () => {}, label = 'task' } = {}) {
 }
 
 async function download(url, outPath) {
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`download failed (${res.status}) for ${url}`);
-  await writeFile(outPath, Buffer.from(await res.arrayBuffer()));
+  await withRetry(async () => {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`download failed (${res.status}) for ${url}`);
+    await writeFile(outPath, Buffer.from(await res.arrayBuffer()));
+  });
   return outPath;
 }
 
